@@ -11,6 +11,7 @@ const IMAGES = {
 const MAP = "https://www.google.com/maps/search/?api=1&query=P%C4%93rnavas+iela+37%2C+Salacgr%C4%ABva";
 const MAP_EMBED = "https://maps.google.com/maps?q=P%C4%93rnavas%20iela%2037%2C%20Salacgr%C4%ABva%2C%20Latvija&z=15&output=embed";
 const CABIN_SOURCE = "https://www.booking.com/hotel/lv/imantas-gulbalku-namins-ar-pirti.lv.html";
+const APARTMENT_GALLERY = "https://www.booking.com/hotel/lv/pernavas-street-apartment-salacgriva.lv.html";
 
 type Stay = "Vasaras dzīvokļi" | "Pirtsmāja" | "Bišu pieredze";
 
@@ -100,10 +101,9 @@ export default function ImantasDemo() {
       <section className={styles.hero} aria-labelledby="hero-title">
         <div className={styles.container + " " + styles.heroGrid}>
           <div className={styles.heroCopy}>
-            <p className={styles.overline}>Salacgrīva · netālu no jūras</p>
-            <h1 id="hero-title">Atpūta <em>pie jūras</em> Salacgrīvā</h1>
-            <p>Vasaras dzīvokļi, guļbaļķu pirtsmāja un bišu pieredze dažu minūšu gājienā no pludmales.</p>
-            <a href="#naktsmitnes" className={styles.primaryBtn}>Apskatīt naktsmītnes <Arrow /></a>
+            <h1 id="hero-title">Atpūta pie jūras Salacgrīvā</h1>
+            <p>Imantās pieejami pieci vasaras dzīvokļi un guļbaļķu pirtsmāja. Līdz pludmalei ir aptuveni 250 metri, un pēc vienošanās var iepazīt arī bišu saimes.</p>
+            <a href="#pieprasijums" className={styles.primaryBtn}>Jautāt par pieejamību <Arrow /></a>
           </div>
           <figure className={styles.heroImage}>
             {/* Autentisks publiskais Imantas foto; lietošanas atļauja pirms publicēšanas jāsaskaņo. */}
@@ -117,24 +117,26 @@ export default function ImantasDemo() {
         <div className={styles.container}>
           <div className={styles.sectionHead}>
             <h2 id="stays-title">Kur palikt Imantās</h2>
-            <p>Izvēlieties atpūtas veidu, kas piemērots jūsu plāniem.</p>
+            <p>Vasaras dzīvokļi vai pirtsmāja — izvēlieties sev piemērotāko.</p>
           </div>
 
           <article className={styles.apartment}>
-            <div>
+            <div className={styles.apartmentCopy}>
               <h3>Vasaras dzīvokļi</h3>
-              <p className={styles.description}>Pieci dzīvokļi divās ēkās pāriem, ģimenēm un nelielām kompānijām.</p>
+              <p className={styles.description}>Pieci dzīvokļi divās ēkās, piemēroti pāriem, ģimenēm un nelielām kompānijām.</p>
               <div className={styles.facts}>
                 <span>Maijs–septembris</span>
-                <span>5 dzīvokļi</span>
+                <span>Virtuvīte, duša un Wi-Fi</span>
               </div>
-            </div>
-            <div className={styles.apartmentAction}>
-              <p>Katram dzīvoklim sava virtuvīte, duša, tualete un Wi-Fi.</p>
               <button className={styles.smallLink} onClick={() => selectStay("Vasaras dzīvokļi")} type="button">
                 Jautāt par dzīvokli <Arrow />
               </button>
             </div>
+            <a className={styles.apartmentGallery} href={APARTMENT_GALLERY} target="_blank" rel="noopener noreferrer" aria-label="Apskatīt īstās Imantas dzīvokļu fotogrāfijas Booking.com">
+              <span className={styles.galleryTitle}>Dzīvokļu fotogrāfijas</span>
+              <span className={styles.galleryDescription}>Interjera attēlus var apskatīt Imantas publiskajā naktsmītnes profilā.</span>
+              <span className={styles.galleryAction}>Atvērt foto galeriju <Arrow diagonal /></span>
+            </a>
           </article>
 
           <article className={styles.sauna}>
