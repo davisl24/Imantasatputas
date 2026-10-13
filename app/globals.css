@@ -1,0 +1,14 @@
+:root {
+  --font-manrope: "Avenir Next", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+html, body {
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #f7f6f1;
+}
+html {
+  scroll-behavior: smooth;
+}
