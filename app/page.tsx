@@ -81,7 +81,7 @@ export default function ImantasDemo() {
             <a href="#pieredze">Bišu pieredze</a>
             <a href="#vieta">Atrašanās vieta</a>
           </nav>
-          <a href="#pieprasijums" className={styles.navCta}>Pieteikt atpūtu <Arrow diagonal /></a>
+          <a href="#pieprasijums" className={styles.navCta}>Jautāt par pieejamību <Arrow diagonal /></a>
           <button type="button" className={styles.mobileMenuToggle} onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Aizvērt izvēlni" : "Atvērt izvēlni"} aria-expanded={menuOpen}>
             <span /> <span />
           </button>
@@ -91,7 +91,7 @@ export default function ImantasDemo() {
             <a href="#naktsmitnes" onClick={() => setMenuOpen(false)}>Naktsmītnes</a>
             <a href="#pieredze" onClick={() => setMenuOpen(false)}>Bišu pieredze</a>
             <a href="#vieta" onClick={() => setMenuOpen(false)}>Atrašanās vieta</a>
-            <a href="#pieprasijums" onClick={() => setMenuOpen(false)}>Pieteikt atpūtu <Arrow /></a>
+            <a href="#pieprasijums" onClick={() => setMenuOpen(false)}>Jautāt par pieejamību <Arrow /></a>
           </nav>
         )}
       </div>
@@ -161,7 +161,7 @@ export default function ImantasDemo() {
       <section className={styles.request} id="pieprasijums" aria-labelledby="request-title">
         <div className={styles.requestShell}>
           <div className={styles.requestIntro}>
-              <h2 id="request-title">Noskaidrojiet pieejamību</h2>
+            <h2 id="request-title">Noskaidrojiet pieejamību</h2>
             <p>Izvēlieties atpūtas veidu un datumus. Atvērsies sagatavots e-pasts saimniekiem.</p>
             <div className={styles.requestContact}><a href="tel:+37129435752">+371 29 435 752 <Arrow diagonal /></a><span>Vēlaties sazināties uzreiz? Piezvaniet.</span></div>
           </div>
@@ -175,9 +175,9 @@ export default function ImantasDemo() {
               <div className={styles.formPair}>
                 <div><label htmlFor="arrive">{stay === "Bišu pieredze" ? "Apmeklējuma datums" : "Ierašanās"}</label><input id="arrive" type="date" required value={arrival} onChange={(e) => setArrival(e.target.value)} /></div>
                 {stay !== "Bišu pieredze" && <div><label htmlFor="leave">Izbraukšana</label><input id="leave" type="date" required min={arrival || undefined} value={departure} onChange={(e) => setDeparture(e.target.value)} /></div>}
-                {stay === "Bišu pieredze" && <div><label htmlFor="guests">Viesu skaits</label><input id="guests" type="number" min="1" max="5" required value={guests} onChange={(e) => setGuests(e.target.value)} /></div>}
+                {stay === "Bišu pieredze" && <div><label htmlFor="guests">Viesu skaits</label><input id="guests" type="number" min="1" required value={guests} onChange={(e) => setGuests(e.target.value)} /></div>}
               </div>
-              {stay !== "Bišu pieredze" && <div className={styles.formSingle}><label htmlFor="guests">Viesu skaits</label><input id="guests" type="number" min="1" max={stay === "Pirtsmāja" ? "6" : "15"} required value={guests} onChange={(e) => setGuests(e.target.value)} /></div>}
+              {stay !== "Bišu pieredze" && <div className={styles.formSingle}><label htmlFor="guests">Viesu skaits</label><input id="guests" type="number" min="1" max={stay === "Pirtsmāja" ? "6" : undefined} required value={guests} onChange={(e) => setGuests(e.target.value)} /></div>}
               <div className={styles.formPair}>
                 <div><label htmlFor="name">Jūsu vārds</label><input id="name" type="text" autoComplete="name" placeholder="Vārds" required value={name} onChange={(e) => setName(e.target.value)} /></div>
                 <div><label htmlFor="email">E-pasts atbildei</label><input id="email" type="email" autoComplete="email" placeholder="epasts@piemers.lv" required value={email} onChange={(e) => setEmail(e.target.value)} /></div>
