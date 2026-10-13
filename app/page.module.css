@@ -42,21 +42,25 @@
 .hero { padding:30px 0 68px;background:var(--paper); }
 .heroGrid { display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:68px;align-items:center; }
 .heroCopy { padding:20px 0; }
-.overline { color:var(--wood);font-size:12px;letter-spacing:.015em;font-weight:bold;margin-bottom:15px !important; }
-.hero h1 { font:400 clamp(49px,4.8vw,69px)/1.055 var(--serif);letter-spacing:-.052em;max-width:650px;text-wrap:balance; }
-.hero h1 em { color:#7b9273;font-weight:400; }
-.heroCopy>p:not(.overline) { font-size:17px;line-height:1.75;max-width:490px;margin-top:22px;color:#5a675d; }
+.hero h1 { font:400 clamp(46px,4.5vw,61px)/1.12 var(--serif);letter-spacing:-.043em;max-width:650px;text-wrap:balance;color:var(--ink); }
+.heroCopy>p { font-size:16px;line-height:1.72;max-width:480px;margin-top:24px;color:#5a675d; }
 .primaryBtn { margin-top:31px;display:inline-flex;align-items:center;justify-content:space-between;gap:43px;
   background:var(--forest);color:white !important;padding:16px 19px;min-height:53px;font-size:13px;font-weight:bold;border:0; }
 .primaryBtn:hover { background:#233729; }
 .heroImage { height:410px;width:100%;overflow:hidden;background:#d9d5c9; }
 .heroImage img { width:100%;height:100%;object-fit:cover;object-position:50% 48%;display:block; }
 .stays { background:var(--warm);padding:78px 0 94px; }
-.sectionHead { display:flex;justify-content:space-between;align-items:flex-end;gap:50px;margin-bottom:34px; }
+.sectionHead { display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;margin-bottom:40px; }
 .sectionHead h2 { font:400 clamp(39px,3.5vw,51px)/1.12 var(--serif);letter-spacing:-.046em; }
-.sectionHead p { font-size:14px;max-width:260px;line-height:1.75;color:#677367; }
-.apartment { border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:35px 0 39px;
-  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:70px;align-items:center; }
+.sectionHead p { font-size:15px;max-width:540px;line-height:1.7;color:#677367; }
+.apartment { border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:34px 0 40px;
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:58px;align-items:center; }
+.apartmentCopy { min-width:0; }
+.apartmentGallery { display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px;min-height:235px;padding:28px 32px;background:#edeee8;border:1px solid #dce0d5; }
+.galleryTitle { font:400 29px/1.2 var(--serif);letter-spacing:-.035em; }
+.galleryDescription {max-width:300px;font-size:13px;line-height:1.7;color:#647065;}
+.galleryAction {display:inline-flex;gap:13px;align-items:center;font-size:13px;font-weight:700;border-bottom:1px solid #829080;padding-bottom:4px;margin-top:8px;}
+.apartmentGallery:hover .galleryAction {color:#3d6a48;}
 .stays h3 { font:400 clamp(35px,3.1vw,43px)/1.12 var(--serif);letter-spacing:-.045em; }
 .description { margin-top:14px !important;line-height:1.7;color:#5d695e;font-size:15px;max-width:440px; }
 .facts { display:flex;flex-wrap:wrap;gap:10px 21px;margin-top:16px;color:#566359;font-size:13px; }
@@ -64,9 +68,6 @@
 .facts span:first-child::before { display:none; }
 .smallLink { display:inline-flex;align-items:center;gap:15px;margin-top:24px;font-size:13px;font-weight:bold;
   border:0;border-bottom:1px solid #7c927d;padding:0 0 5px;color:var(--ink);background:none;text-align:left; }
-.apartmentAction { border-left:1px solid var(--line);padding-left:48px; }
-.apartmentAction p { max-width:245px;font-size:14px;color:#687368;line-height:1.75; }
-.apartmentAction .smallLink { margin-top:17px; }
 .sauna { padding-top:53px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.86fr);align-items:center;gap:70px; }
 .saunaImage { height:335px;background:#d9d0c6;overflow:hidden; }
 .saunaImage img { width:100%;height:100%;object-fit:cover;object-position:50% 50%;display:block; }
@@ -86,7 +87,7 @@
 .requestHead h2 { font:400 clamp(41px,3.7vw,52px)/1.09 var(--serif);letter-spacing:-.048em;max-width:450px; }
 .requestHead p { max-width:335px;font-size:15px;line-height:1.75;margin-top:19px;color:#626d62; }
 .phone { display:inline-flex;align-items:center;gap:10px;margin-top:30px;font-size:16px;border-bottom:1px solid #8b988a;padding-bottom:5px; }
-.requestForm { border-top:1px solid #aeb9aa;padding-top:15px; }
+.requestForm { border:0;padding-top:0; }
 .fields { display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 18px; }
 .field { display:flex;flex-direction:column;gap:7px;min-width:0; }
 .spanFull { grid-column:1/-1; }
@@ -118,7 +119,6 @@
   .heroGrid { gap:36px; }
   .hero h1 { font-size:clamp(45px,5vw,59px); }
   .apartment { gap:32px; }
-  .apartmentAction { padding-left:30px; }
   .sauna { gap:36px; }
   .beeRow { grid-template-columns:190px 1fr auto;gap:25px; }
   .requestGrid { gap:40px; }
@@ -137,16 +137,15 @@
   .heroGrid,.apartment,.sauna,.beeRow,.requestGrid,.locationGrid { grid-template-columns:1fr;gap:20px; }
   .heroCopy { padding:10px 0 12px; }
   .hero h1 { font-size:clamp(43px,11.5vw,60px); }
-  .heroCopy>p:not(.overline) { font-size:15px; }
+  .heroCopy>p { font-size:15px; }
   .heroImage { height:270px; }
   .stays { padding:57px 0 62px; }
-  .sectionHead { display:block;margin-bottom:22px; }
+  .sectionHead { gap:10px;margin-bottom:26px; }
   .sectionHead h2 { font-size:39px; }
-  .sectionHead p { margin-top:12px; }
+  .sectionHead p { font-size:14px;max-width:350px; }
   .apartment { padding:26px 0 29px;gap:18px; }
   .stays h3 { font-size:36px; }
-  .apartmentAction { border-left:0;padding-left:0; }
-  .apartmentAction p { max-width:none; }
+  .apartmentGallery {min-height:210px;padding:25px 24px;}
   .sauna { padding-top:33px; }
   .saunaImage { height:250px; }
   .saunaContent { padding-left:0; }
@@ -168,7 +167,7 @@
 @media(max-width:430px){
   .navCta { font-size:10px;padding:9px 8px; }
   .logo { font-size:24px; }
-  .hero h1 { font-size:clamp(42px,11.2vw,50px); }
+  .hero h1 { font-size:clamp(40px,10.8vw,49px); }
   .heroImage { height:255px; }
   .facts { gap:8px 14px; }
   .field input,.field select { padding:8px 9px;font-size:12px; }
