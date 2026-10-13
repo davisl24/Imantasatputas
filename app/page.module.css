@@ -77,8 +77,8 @@
 .stays { padding: 82px 46px 85px; background: var(--white); }
 .sectionHeader { max-width: 1160px; margin: 0 auto 28px; }
 .sectionHeader h2 { font:400 clamp(38px,3.8vw,54px)/1.13 var(--serif); letter-spacing: -.05em; }
-.apartmentBlock { max-width: 1160px; margin: 0 auto; display:grid; grid-template-columns: 55% 45%; gap: 36px; padding: 42px 0 44px; border-top:1px solid #D8DBD1; }
-.apartmentIntro { max-width: 520px; }
+.apartmentBlock { max-width: 1160px; margin: 0 auto; display:grid; grid-template-columns: minmax(0, 55fr) minmax(0, 45fr); gap: 36px; padding: 42px 0 44px; border-top:1px solid #D8DBD1; }
+.apartmentIntro { max-width: 520px; min-width:0; }
 .stayLabel { font-size:12px; color:var(--wood); margin-bottom:13px !important; }
 .apartmentIntro h3,.saunaCopy h3 { font:400 clamp(34px,3.2vw,49px)/1.1 var(--serif); letter-spacing:-.05em; }
 .apartmentIntro > p:not(.stayLabel), .saunaCopy > p:not(.stayLabel) { color: #5D6B60; font-size:15px; line-height:1.75; margin-top:17px; max-width:450px; }
@@ -86,23 +86,23 @@
 .apartmentAside > p { font-size:15px; line-height:1.75; color:#5D6B60; max-width:290px; }
 .actionLink { border:none; padding:0 0 5px; display:inline-flex; gap:20px; align-items:center; border-bottom:1px solid #70806E; background:transparent; font-size:14px; font-weight:700; margin-top:21px; transition:gap .2s ease; }
 .actionLink:hover {gap:26px;}
-.saunaBlock { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 49% 51%; align-items:center; gap: 55px; padding-top: 25px; }
+.saunaBlock { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 49fr) minmax(0, 51fr); align-items:center; gap: 55px; padding-top: 25px; }
 .saunaVisual { min-height:360px; height:360px; background:#DDD8CA; overflow:hidden; }
 .saunaVisual img { display:block; width:100%; height:100%; object-fit:cover; object-position:50% 50%; }
-.saunaCopy {padding:12px 15px 12px 0;}
+.saunaCopy {padding:12px 15px 12px 0; min-width:0;}
 .photoAttribution { max-width:1160px; margin:24px auto 0 !important; font-size:11px; color:#868A7E; line-height:1.6; }
 .photoAttribution a {text-decoration: underline; text-underline-offset: 2px;}
 .beeSection { background: #EAE9E0; }
-.beeInner {max-width:1160px; margin:0 auto; padding:57px 0; display:grid; grid-template-columns: 58% 42%; gap:40px; align-items:center;}
+.beeInner {max-width:1160px; margin:0 auto; padding:57px 0; display:grid; grid-template-columns: minmax(0, 58fr) minmax(0, 42fr); gap:40px; align-items:center;}
 .beeText h2 {font:400 clamp(34px,3.5vw,46px)/1.15 var(--serif); letter-spacing:-.045em;}
 .beeText p { font-size:15px; line-height:1.75; max-width:490px; color:#566459; margin-top:15px !important; }
 .beeAside { border-left:1px solid #CDD5CB; padding-left:43px;}
 .beeAside p {color:#566459; font-size:14px; line-height:1.7;}
 .beeAside .actionLink {margin-top:16px;}
 .request { padding:85px 46px; background:#EDEBE2; }
-.requestShell { max-width:1160px; margin:0 auto; display:grid; grid-template-columns:42% 58%; gap:32px; align-items:start; }
+.requestShell { max-width:1160px; margin:0 auto; display:grid; grid-template-columns:minmax(0, 42fr) minmax(0, 58fr); gap:32px; align-items:start; }
 .requestIntro { padding:20px 25px 0 0; }
-.requestIntro h2 { max-width:490px; font-size:clamp(39px,4vw,57px); }
+.requestIntro h2 { max-width:490px; font:400 clamp(39px,4vw,57px)/1.12 var(--serif); letter-spacing:-.05em; }
 .requestIntro > p:not(.kicker) { font-size:15px; line-height:1.9; color:#626c62; max-width:390px; margin-top:24px; }
 .requestContact { margin-top:35px; display:flex; flex-direction:column; gap:7px; }
 .requestContact a { font-size:19px; font-weight:600; width:max-content; border-bottom:1px solid #7b8878; padding-bottom:6px; }
@@ -124,7 +124,7 @@
 .formSmall { font-size:11px; line-height:1.7; color:#838a80; margin-top:13px !important; }
 .formError { color:#ab322e; font-size:12px; margin-top:10px !important; }
 
-.location { background:var(--paper); padding:70px 46px; display:grid; grid-template-columns: 38% 62%; gap:35px; align-items:center; }
+.location { background:var(--paper); padding:70px 46px; display:grid; grid-template-columns: minmax(0, 38fr) minmax(0, 62fr); gap:35px; align-items:center; }
 .location > div:first-child { width:min(100%, 440px); justify-self:end; padding-right:15px; }
 .location h2 { font:400 clamp(37px,3.6vw,52px)/1.16 var(--serif); letter-spacing:-.048em; }
 .location > div:first-child p { font-size:15px; line-height:1.75; color:#657064; max-width:360px; margin-top:14px; }
