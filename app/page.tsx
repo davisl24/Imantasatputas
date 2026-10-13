@@ -10,6 +10,7 @@ const IMAGES = {
 };
 
 const MAP = "https://www.google.com/maps/search/?api=1&query=P%C4%93rnavas+iela+37%2C+Salacgr%C4%ABva";
+const MAP_EMBED = "https://maps.google.com/maps?q=P%C4%93rnavas%20iela%2037%2C%20Salacgr%C4%ABva%2C%20Latvija&z=15&output=embed";
 const SOURCE_APARTMENTS = "https://www.booking.com/hotel/lv/pernavas-street-apartment-salacgriva.lv.html";
 const SOURCE_CABIN = "https://www.booking.com/hotel/lv/imantas-gulbalku-namins-ar-pirti.lv.html";
 
@@ -109,7 +110,6 @@ export default function ImantasDemo() {
               <a href="#naktsmitnes" className={styles.buttonDark}>Izvēlēties atpūtu <Arrow /></a>
               <a href="#vieta" className={styles.underlinedLink}>Kur mēs atrodamies <Arrow diagonal /></a>
             </div>
-            <div className={styles.heroFooter}><span className={styles.heroFooterRule} /> Jūra, mežs un atpūta savā ritmā</div>
           </div>
           <div className={styles.heroVisual}>
             {/* Pagaidu publiskots īpašuma foto; lietošanas tiesības jāapstiprina pirms publicēšanas. */}
@@ -122,17 +122,16 @@ export default function ImantasDemo() {
 
       <section className={styles.introBand} aria-label="Svarīgākais par Imantām">
         <div className={styles.introItems}>
-          <div><strong>250 m</strong><span>līdz smilšainai pludmalei</span></div>
-          <div><strong>5 dzīvokļi</strong><span>vasaras atpūtai</span></div>
-          <div><strong>Līdz 6 viesiem</strong><span>pirtsmājā arī ziemā</span></div>
+          <p><strong>250 m</strong><span>līdz pludmalei</span></p>
+          <p><strong>5 vasaras dzīvokļi</strong><span>divās ēkās</span></p>
+          <p><strong>Pirtsmāja līdz 6 viesiem</strong><span>atpūtai visa gada garumā</span></p>
         </div>
       </section>
 
       <section className={styles.stays} id="naktsmitnes" aria-labelledby="stays-title">
         <div className={styles.sectionHeader}>
           <div>
-            <p className={styles.kicker}>Palieciet pie mums</p>
-            <h2 id="stays-title">Atpūta, kādu vēlaties</h2>
+              <h2 id="stays-title">Atpūta, kādu vēlaties</h2>
           </div>
           <p>Divas atšķirīgas iespējas — vasaras dienām pie jūras vai nesteidzīgam vakaram pirtī.</p>
         </div>
@@ -168,25 +167,27 @@ export default function ImantasDemo() {
 
       <section className={styles.beeSection} id="pieredze" aria-labelledby="bee-title">
         <div className={styles.beeText}>
-          <p className={styles.kicker}>Vairāk nekā nakšņošana</p>
           <h2 id="bee-title">Iepazīstiet <em>bišu pasauli</em></h2>
-          <p>Imantās iespējams iepazīt bišu saimju ikdienu, piedalīties vaska sveču liešanas nodarbībās un izmēģināt atpūtu uz bišu stropiem.</p>
-          <p className={styles.beeNote}>Pieredzi un tās norisi lūdzam iepriekš saskaņot ar saimniekiem. Veselības ieguvumi netiek solīti.</p>
+          <p>Iepazīstiet bišu saimju ikdienu un izvēlieties sev interesējošu pieredzi. Par tās norisi var vienoties ar saimniekiem.</p>
+          <p className={styles.beeNote}>Aktivitāšu laiki un pieejamība jāprecizē iepriekš.</p>
           <button type="button" onClick={() => chooseStay("Bišu pieredze")} className={styles.lightAction}>Uzzināt par bišu pieredzi <Arrow /></button>
         </div>
-        <div className={styles.beeGraphic} aria-hidden="true">
-          <div className={styles.hexOuter}><div className={styles.hexInner}>IMANTAS<span>Bišu pieredze</span></div></div>
-          <span className={styles.graphicCaption}>DABA · MIERĀ · TUVUMĀ</span>
+        <div className={styles.beeExperience}>
+          <p className={styles.beeExperienceHeading}>Ko varat piedzīvot</p>
+          <ul>
+            <li>Bišu saimju iepazīšana</li>
+            <li>Vaska sveču liešana</li>
+            <li>Atpūta uz bišu stropiem</li>
+          </ul>
         </div>
       </section>
 
       <section className={styles.gallery} id="galerija" aria-labelledby="gallery-title">
         <div className={styles.sectionHeader}>
           <div>
-            <p className={styles.kicker}>Ieskatieties</p>
-            <h2 id="gallery-title">Mazs ieskats Imantās</h2>
+              <h2 id="gallery-title">Mazs ieskats Imantās</h2>
           </div>
-          <p>Attēli no publiski pieejamajiem Imantas naktsmītņu profiliem. Pilnai galerijai nepieciešami saimnieku oriģinālfoto.</p>
+          <p>Ieskatieties naktsmītnēs un saimniecības vidē. Plašāku galeriju papildināsim ar saimnieku oriģinālfoto.</p>
         </div>
         <div className={styles.galleryGrid}>
           <figure className={styles.galleryLarge}>
@@ -211,8 +212,7 @@ export default function ImantasDemo() {
       <section className={styles.request} id="pieprasijums" aria-labelledby="request-title">
         <div className={styles.requestShell}>
           <div className={styles.requestIntro}>
-            <p className={styles.kicker}>Plānojiet savu atpūtu</p>
-            <h2 id="request-title">Noskaidrosim, vai ir brīvs</h2>
+              <h2 id="request-title">Noskaidrosim, vai ir brīvs</h2>
             <p>Norādiet vēlamo atpūtas veidu un datumus. Sagatavosim e-pastu saimniekiem, lai jūs varētu noskaidrot pieejamību un cenu.</p>
             <div className={styles.requestContact}><a href="tel:+37129435752">+371 29 435 752 <Arrow diagonal /></a><span>Vēlaties sazināties uzreiz? Piezvaniet.</span></div>
           </div>
@@ -245,16 +245,18 @@ export default function ImantasDemo() {
 
       <section className={styles.location} id="vieta" aria-labelledby="location-title">
         <div>
-          <p className={styles.kicker}>Kur atrast Imantas</p>
           <h2 id="location-title">Jūra ir tepat blakus</h2>
           <p>Salacgrīva, Pērnavas iela 37. Apmēram 250 metru pastaigā no smilšainas pludmales.</p>
           <a href={MAP} target="_blank" rel="noopener noreferrer" className={styles.actionLink}>Atvērt maršrutu Google Maps <Arrow diagonal /></a>
         </div>
         <div className={styles.mapCard}>
-          <div className={styles.mapGrid} aria-hidden="true" />
-          <div className={styles.mapPin} aria-hidden="true"><span /></div>
-          <div className={styles.mapTag}>IMANTAS<span>Pērnavas iela 37, Salacgrīva</span></div>
-          <a href={MAP} target="_blank" rel="noopener noreferrer" aria-label="Atvērt Imantas atrašanās vietu Google Maps" className={styles.mapOverlayLink} />
+          <iframe
+            title="Imantas atrašanās vieta — Pērnavas iela 37, Salacgrīva"
+            src={MAP_EMBED}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+          />
         </div>
       </section>
 
