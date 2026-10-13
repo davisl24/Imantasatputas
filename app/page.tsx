@@ -103,8 +103,8 @@ export default function ImantasDemo() {
         <div className={styles.heroContent}>
           <div className={styles.heroText}>
             <div className={styles.locationLine}><span className={styles.smallLine} /> Salacgrīva · 250 m līdz jūrai</div>
-            <h1 id="hero-title">Vieta, kur <em>piebremzēt</em> un būt tuvāk dabai</h1>
-            <p>Vasaras dzīvokļi, mājīga pirtsmāja un īpaša bišu pieredze. Nesteidzīgas brīvdienas Salacgrīvā, pavisam netālu no jūras.</p>
+            <h1 id="hero-title">Atpūta <em>pie jūras</em> Salacgrīvā</h1>
+            <p>Vasaras dzīvokļi, guļbaļķu pirtsmāja un īpaša bišu pieredze. Izvēlieties sev piemērotāko atpūtu vien dažu minūšu gājienā no pludmales.</p>
             <div className={styles.heroActions}>
               <a href="#naktsmitnes" className={styles.buttonDark}>Izvēlēties atpūtu <Arrow /></a>
               <a href="#vieta" className={styles.underlinedLink}>Kur mēs atrodamies <Arrow diagonal /></a>
@@ -114,8 +114,8 @@ export default function ImantasDemo() {
           <div className={styles.heroVisual}>
             {/* Pagaidu publiskots īpašuma foto; lietošanas tiesības jāapstiprina pirms publicēšanas. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMAGES.sign} alt="Saimniecības Imantas koka nosaukuma zīme dārzā" className={styles.heroPhoto} />
-            <div className={styles.heroPictureLabel}>SAIMNIECĪBA IMANTAS <span>SALACGRĪVA, LATVIJA</span></div>
+            <img src={IMAGES.cabin} alt="Imantas guļbaļķu pirtsmāja ar apgaismotu terasi vakarā" className={styles.heroPhoto} />
+            <div className={styles.heroPictureLabel}>IMANTAS PIRTSMĀJA <span>SALACGRĪVA, LATVIJA</span></div>
           </div>
         </div>
       </section>
