@@ -10,7 +10,7 @@ const IMAGES = {
 
 const MAP = "https://www.google.com/maps/search/?api=1&query=P%C4%93rnavas+iela+37%2C+Salacgr%C4%ABva";
 const MAP_EMBED = "https://maps.google.com/maps?q=P%C4%93rnavas%20iela%2037%2C%20Salacgr%C4%ABva%2C%20Latvija&z=15&output=embed";
-const SOURCE_CABIN = "https://www.booking.com/hotel/lv/imantas-gulbalku-namins-ar-pirti.lv.html";
+const CABIN_SOURCE = "https://www.booking.com/hotel/lv/imantas-gulbalku-namins-ar-pirti.lv.html";
 
 type Stay = "Vasaras dzīvokļi" | "Pirtsmāja" | "Bišu pieredze";
 
@@ -23,198 +23,210 @@ export default function ImantasDemo() {
   const [arrival, setArrival] = useState("");
   const [departure, setDeparture] = useState("");
   const [guests, setGuests] = useState("2");
-  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [message, setMessage] = useState("");
   const [formError, setFormError] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  function chooseStay(value: Stay) {
+  function selectStay(value: Stay) {
     setStay(value);
     setFormError("");
+    setMenuOpen(false);
     document.getElementById("pieprasijums")?.scrollIntoView({ behavior: "smooth" });
   }
 
-  function submitInquiry(event: FormEvent<HTMLFormElement>) {
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    const count = Number(guests);
+    if (!Number.isInteger(count) || count < 1 || (stay === "Pirtsmāja" && count > 6)) {
+      setFormError("Lūdzu, pārbaudiet viesu skaitu.");
+      return;
+    }
     if (stay !== "Bišu pieredze" && (!departure || departure <= arrival)) {
-      setFormError("Lūdzu, izvēlieties izbraukšanas datumu pēc ierašanās datuma.");
+      setFormError("Izbraukšanai jābūt pēc ierašanās datuma.");
       return;
     }
     setFormError("");
-    const content = [
+    const lines = [
       "Labdien!",
       "",
-      "Vēlos noskaidrot pieejamību saimniecībā Imantas.",
-      "",
-      "Interesē: " + stay,
-      "Vēlamais datums: " + arrival,
+      "Vēlos noskaidrot pieejamību Imantās.",
+      "Atpūtas veids: " + stay,
+      "Ierašanās / apmeklējums: " + arrival,
       ...(stay === "Bišu pieredze" ? [] : ["Izbraukšana: " + departure]),
       "Viesu skaits: " + guests,
-      "Vārds: " + name,
-      "Atbildes e-pasts: " + email,
-      ...(message.trim() ? ["", "Papildu informācija:", message.trim()] : []),
+      "E-pasts atbildei: " + email,
       "",
-      "Lūdzu, apstipriniet pieejamību un cenu.",
-    ].join("\n");
-    const subject = encodeURIComponent("Imantas – pieprasījums par " + stay);
-    const body = encodeURIComponent(content);
-    // Atver tikai e-pasta klientu; pati demonstrācija datus nesūta un neglabā.
-    window.location.href = "mailto:avei6@inbox.lv?subject=" + subject + "&body=" + body;
+      "Lūdzu, informējiet par pieejamību un cenu.",
+    ];
+    // Demo neveic rezervāciju un neglabā personas datus; e-pasts jānosūta pašam lietotājam.
+    window.location.href = "mailto:avei6@inbox.lv?subject=" +
+      encodeURIComponent("Imantas — pieejamības pieprasījums") +
+      "&body=" + encodeURIComponent(lines.join("\n"));
   }
 
   return (
     <main className={styles.page} id="sakums">
-      <div className={styles.demoBar}>
-        <span className={styles.demoDot} />
-        Dizaina priekšskatījums · nav oficiālā mājaslapa
+      <div className={styles.demoStrip}>
+        Imantas · dizaina priekšskatījums · nav oficiālā mājaslapa
       </div>
 
-      <div className={styles.navigationWrap}>
-        <header className={styles.navigation}>
-          <a href="#sakums" className={styles.brand} aria-label="Imantas — sākums" onClick={() => setMenuOpen(false)}>
-            <span className={styles.brandName}>IMANTAS</span>
-            <span className={styles.brandSubtitle}>ATPŪTA SALACGRĪVĀ</span>
+      <header className={styles.header}>
+        <div className={styles.container + " " + styles.nav}>
+          <a className={styles.logo} href="#sakums" onClick={() => setMenuOpen(false)}>
+            IMANTAS <span>ATPŪTA SALACGRĪVĀ</span>
           </a>
-          <nav className={styles.desktopLinks} aria-label="Galvenā navigācija">
+          <nav className={styles.navLinks} aria-label="Galvenā navigācija">
             <a href="#naktsmitnes">Naktsmītnes</a>
             <a href="#pieredze">Bišu pieredze</a>
             <a href="#vieta">Atrašanās vieta</a>
           </nav>
-          <a href="#pieprasijums" className={styles.navCta}>Jautāt par pieejamību <Arrow diagonal /></a>
-          <button type="button" className={styles.mobileMenuToggle} onClick={() => setMenuOpen(!menuOpen)} aria-label={menuOpen ? "Aizvērt izvēlni" : "Atvērt izvēlni"} aria-expanded={menuOpen}>
-            <span /> <span />
-          </button>
-        </header>
-        {menuOpen && (
-          <nav className={styles.mobileLinks} aria-label="Mobilā navigācija">
-            <a href="#naktsmitnes" onClick={() => setMenuOpen(false)}>Naktsmītnes</a>
-            <a href="#pieredze" onClick={() => setMenuOpen(false)}>Bišu pieredze</a>
-            <a href="#vieta" onClick={() => setMenuOpen(false)}>Atrašanās vieta</a>
-            <a href="#pieprasijums" onClick={() => setMenuOpen(false)}>Jautāt par pieejamību <Arrow /></a>
-          </nav>
-        )}
-      </div>
+          <div className={styles.navActions}>
+            <a className={styles.navCta} href="#pieprasijums">Jautāt par pieejamību <Arrow diagonal /></a>
+            <button type="button" className={styles.menuButton}
+              aria-expanded={menuOpen} aria-controls="imantas-mobile-menu"
+              aria-label={menuOpen ? "Aizvērt izvēlni" : "Atvērt izvēlni"}
+              onClick={() => setMenuOpen(!menuOpen)}>
+              <span /><span />
+            </button>
+          </div>
+        </div>
+        {menuOpen && <nav id="imantas-mobile-menu" className={styles.mobileLinks} aria-label="Mobilā navigācija">
+          <a onClick={() => setMenuOpen(false)} href="#naktsmitnes">Naktsmītnes</a>
+          <a onClick={() => setMenuOpen(false)} href="#pieredze">Bišu pieredze</a>
+          <a onClick={() => setMenuOpen(false)} href="#vieta">Atrašanās vieta</a>
+        </nav>}
+      </header>
 
       <section className={styles.hero} aria-labelledby="hero-title">
-        <div className={styles.heroContent}>
-          <div className={styles.heroText}>
-            <p className={styles.locationLine}>Salacgrīva · netālu no jūras</p>
+        <div className={styles.container + " " + styles.heroGrid}>
+          <div className={styles.heroCopy}>
+            <p className={styles.overline}>Salacgrīva · netālu no jūras</p>
             <h1 id="hero-title">Atpūta <em>pie jūras</em> Salacgrīvā</h1>
             <p>Vasaras dzīvokļi, guļbaļķu pirtsmāja un bišu pieredze dažu minūšu gājienā no pludmales.</p>
-            <a href="#naktsmitnes" className={styles.buttonDark}>Apskatīt atpūtas iespējas <Arrow /></a>
+            <a href="#naktsmitnes" className={styles.primaryBtn}>Apskatīt naktsmītnes <Arrow /></a>
           </div>
-          <figure className={styles.heroVisual}>
-            {/* Publiskots īpašuma foto tikai demo. Tiesības pirms publicēšanas jāsaskaņo. */}
+          <figure className={styles.heroImage}>
+            {/* Autentisks publiskais Imantas foto; lietošanas atļauja pirms publicēšanas jāsaskaņo. */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMAGES.cabin} alt="Imantas guļbaļķu pirtsmāja ar izgaismotu terasi vakarā" className={styles.heroPhoto} />
+            <img src={IMAGES.cabin} alt="Imantas guļbaļķu pirtsmāja ar apgaismotu terasi" />
           </figure>
         </div>
       </section>
 
       <section className={styles.stays} id="naktsmitnes" aria-labelledby="stays-title">
-        <div className={styles.sectionHeader}>
-          <h2 id="stays-title">Nakšņošana Imantās</h2>
-        </div>
+        <div className={styles.container}>
+          <div className={styles.sectionHead}>
+            <h2 id="stays-title">Kur palikt Imantās</h2>
+            <p>Izvēlieties atpūtas veidu, kas piemērots jūsu plāniem.</p>
+          </div>
 
-        <article className={styles.apartmentBlock}>
-          <div className={styles.apartmentIntro}>
-            <p className={styles.stayLabel}>Maijs — septembris</p>
-            <h3>Vasaras dzīvokļi</h3>
-            <p>Pieci dzīvokļi divās ēkās — pāriem, ģimenēm un nelielām kompānijām.</p>
-          </div>
-          <div className={styles.apartmentAside}>
-            <p>Virtuvīte, duša, tualete un Wi-Fi katrā dzīvoklī.</p>
-            <button type="button" onClick={() => chooseStay("Vasaras dzīvokļi")} className={styles.actionLink}>Jautāt par dzīvokli <Arrow /></button>
-          </div>
-        </article>
+          <article className={styles.apartment}>
+            <div>
+              <h3>Vasaras dzīvokļi</h3>
+              <p className={styles.description}>Pieci dzīvokļi divās ēkās pāriem, ģimenēm un nelielām kompānijām.</p>
+              <div className={styles.facts}>
+                <span>Maijs–septembris</span>
+                <span>5 dzīvokļi</span>
+              </div>
+            </div>
+            <div className={styles.apartmentAction}>
+              <p>Katram dzīvoklim sava virtuvīte, duša, tualete un Wi-Fi.</p>
+              <button className={styles.smallLink} onClick={() => selectStay("Vasaras dzīvokļi")} type="button">
+                Jautāt par dzīvokli <Arrow />
+              </button>
+            </div>
+          </article>
 
-        <article className={styles.saunaBlock}>
-          <div className={styles.saunaVisual}>
-            {/* Pirtsmājas interjers, nevis vasaras dzīvokļa foto. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMAGES.kitchen} alt="Imantas pirtsmājas koka interjers ar nelielu virtuvi" loading="lazy" />
-          </div>
-          <div className={styles.saunaCopy}>
-            <p className={styles.stayLabel}>Pieejama visu gadu</p>
-            <h3>Guļbaļķu pirtsmāja</h3>
-            <p>Līdz sešiem viesiem. Malkas pirts, virtuve un terase; āra kubls kā papildu iespēja.</p>
-            <button type="button" onClick={() => chooseStay("Pirtsmāja")} className={styles.actionLink}>Jautāt par pirtsmāju <Arrow /></button>
-          </div>
-        </article>
-        <p className={styles.photoAttribution}>Demo foto avots: <a href={SOURCE_CABIN} target="_blank" rel="noopener noreferrer">Imantas pirtsmājas publiskais profils</a>. Izmantošanas tiesības pirms publicēšanas jāsaskaņo.</p>
-      </section>
-
-      <section className={styles.beeSection} id="pieredze" aria-labelledby="bee-title">
-        <div className={styles.beeInner}>
-          <div className={styles.beeText}>
-            <h2 id="bee-title">Bišu pieredze</h2>
-            <p>Iepazīstiet bišu saimes, izmēģiniet vaska sveču liešanu vai atpūtu uz stropiem.</p>
-          </div>
-          <div className={styles.beeAside}>
-            <p>Aktivitātes iepriekš jāsaskaņo ar saimniekiem.</p>
-            <button type="button" onClick={() => chooseStay("Bišu pieredze")} className={styles.actionLink}>Jautāt par iespējām <Arrow /></button>
-          </div>
+          <article className={styles.sauna}>
+            <figure className={styles.saunaImage}>
+              {/* Attēlā redzama pirtsmājas virtuve, nevis vasaras dzīvoklis. */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={IMAGES.kitchen} loading="lazy" alt="Imantas pirtsmājas koka interjers ar virtuves zonu" />
+            </figure>
+            <div className={styles.saunaContent}>
+              <h3>Guļbaļķu pirtsmāja</h3>
+              <p className={styles.description}>Atpūta līdz sešiem viesiem. Malkas pirts, virtuve un terase. Kubls pieejams papildus.</p>
+              <div className={styles.facts}><span>Visu gadu</span><span>Līdz 6 viesiem</span><span>Malkas pirts</span></div>
+              <button className={styles.smallLink} onClick={() => selectStay("Pirtsmāja")} type="button">
+                Jautāt par pirtsmāju <Arrow />
+              </button>
+            </div>
+          </article>
+          <p className={styles.photoDisclaimer}>Pirtsmājas foto: <a href={CABIN_SOURCE} target="_blank" rel="noopener noreferrer">publiskais naktsmītnes profils</a>. Lietošanas tiesības pirms publicēšanas jāsaskaņo.</p>
         </div>
       </section>
 
-      <section className={styles.request} id="pieprasijums" aria-labelledby="request-title">
-        <div className={styles.requestShell}>
-          <div className={styles.requestIntro}>
-            <h2 id="request-title">Noskaidrojiet pieejamību</h2>
-            <p>Izvēlieties atpūtas veidu un datumus. Atvērsies sagatavots e-pasts saimniekiem.</p>
-            <div className={styles.requestContact}><a href="tel:+37129435752">+371 29 435 752 <Arrow diagonal /></a><span>Vēlaties sazināties uzreiz? Piezvaniet.</span></div>
+      <section className={styles.bee} id="pieredze" aria-labelledby="bee-title">
+        <div className={styles.container + " " + styles.beeRow}>
+          <h2 id="bee-title">Bišu pieredze</h2>
+          <p>Bišu saimju iepazīšana, vaska sveču liešana un atpūta uz stropiem. Norisi saskaņo ar saimniekiem.</p>
+          <button type="button" className={styles.smallLink} onClick={() => selectStay("Bišu pieredze")}>Jautāt par iespējām <Arrow /></button>
+        </div>
+      </section>
+
+      <section className={styles.inquiry} id="pieprasijums" aria-labelledby="inquiry-title">
+        <div className={styles.container + " " + styles.requestGrid}>
+          <div className={styles.requestHead}>
+            <h2 id="inquiry-title">Noskaidrojiet pieejamību</h2>
+            <p>Izvēlieties naktsmītni un datumus. Sagatavosim e-pastu saimniekiem — rezervācija netiek apstiprināta automātiski.</p>
+            <a className={styles.phone} href="tel:+37129435752">+371 29 435 752 <Arrow diagonal /></a>
           </div>
-          <div className={styles.formPanel}>
-            <div className={styles.formDemoNote}><span className={styles.demoDot} /> Demonstrācija: pieejamība netiek pārbaudīta un dati netiek automātiski nosūtīti</div>
-            <form onSubmit={submitInquiry}>
-              <label htmlFor="stay">Atpūtas veids</label>
-              <select id="stay" value={stay} onChange={(e) => {setStay(e.target.value as Stay);setFormError("");}}>
-                <option>Vasaras dzīvokļi</option><option>Pirtsmāja</option><option>Bišu pieredze</option>
-              </select>
-              <div className={styles.formPair}>
-                <div><label htmlFor="arrive">{stay === "Bišu pieredze" ? "Apmeklējuma datums" : "Ierašanās"}</label><input id="arrive" type="date" required value={arrival} onChange={(e) => setArrival(e.target.value)} /></div>
-                {stay !== "Bišu pieredze" && <div><label htmlFor="leave">Izbraukšana</label><input id="leave" type="date" required min={arrival || undefined} value={departure} onChange={(e) => setDeparture(e.target.value)} /></div>}
-                {stay === "Bišu pieredze" && <div><label htmlFor="guests">Viesu skaits</label><input id="guests" type="number" min="1" required value={guests} onChange={(e) => setGuests(e.target.value)} /></div>}
+
+          <form className={styles.requestForm} onSubmit={onSubmit}>
+            <div className={styles.fields}>
+              <div className={styles.field + " " + styles.spanFull}>
+                <label htmlFor="stay">Atpūtas veids</label>
+                <select id="stay" value={stay} onChange={e => { setStay(e.target.value as Stay); setFormError(""); }}>
+                  <option>Vasaras dzīvokļi</option><option>Pirtsmāja</option><option>Bišu pieredze</option>
+                </select>
               </div>
-              {stay !== "Bišu pieredze" && <div className={styles.formSingle}><label htmlFor="guests">Viesu skaits</label><input id="guests" type="number" min="1" max={stay === "Pirtsmāja" ? "6" : undefined} required value={guests} onChange={(e) => setGuests(e.target.value)} /></div>}
-              <div className={styles.formPair}>
-                <div><label htmlFor="name">Jūsu vārds</label><input id="name" type="text" autoComplete="name" placeholder="Vārds" required value={name} onChange={(e) => setName(e.target.value)} /></div>
-                <div><label htmlFor="email">E-pasts atbildei</label><input id="email" type="email" autoComplete="email" placeholder="epasts@piemers.lv" required value={email} onChange={(e) => setEmail(e.target.value)} /></div>
+              <div className={styles.field}>
+                <label htmlFor="arrival">{stay === "Bišu pieredze" ? "Apmeklējuma datums" : "Ierašanās"}</label>
+                <input id="arrival" type="date" required value={arrival} onChange={e => setArrival(e.target.value)} />
               </div>
-              <label htmlFor="notes">Papildu jautājums <span className={styles.optional}>(neobligāti)</span></label>
-              <textarea id="notes" rows={3} placeholder="Kas jums vēl būtu svarīgi?" value={message} onChange={(e) => setMessage(e.target.value)} />
-              {formError && <p role="alert" className={styles.formError}>{formError}</p>}
-              <button type="submit" className={styles.formSubmit}>Sagatavot pieprasījuma e-pastu <Arrow /></button>
-              <p className={styles.formSmall}>Atvērsies jūsu e-pasta programma ar aizpildītu ziņu. Jūs to pārskatīsiet un nosūtīsiet pats.</p>
-            </form>
-          </div>
+              {stay !== "Bišu pieredze" && <div className={styles.field}>
+                <label htmlFor="departure">Izbraukšana</label>
+                <input id="departure" type="date" min={arrival || undefined} required value={departure} onChange={e => setDeparture(e.target.value)} />
+              </div>}
+              <div className={styles.field}>
+                <label htmlFor="guests">Viesu skaits</label>
+                <input id="guests" type="number" required min={1} max={stay === "Pirtsmāja" ? 6 : undefined}
+                  value={guests} onChange={e => setGuests(e.target.value)} />
+              </div>
+              <div className={styles.field}>
+                <label htmlFor="email">E-pasts atbildei</label>
+                <input id="email" type="email" autoComplete="email" required placeholder="epasts@piemers.lv"
+                  value={email} onChange={e => setEmail(e.target.value)} />
+              </div>
+            </div>
+            {formError && <p className={styles.formError} role="alert">{formError}</p>}
+            <div className={styles.formAction}>
+              <p>Demo: pieejamība netiek pārbaudīta. E-pastu nosūtīsiet pats.</p>
+              <button className={styles.primaryBtn} type="submit">Sagatavot e-pastu <Arrow /></button>
+            </div>
+          </form>
         </div>
       </section>
 
       <section className={styles.location} id="vieta" aria-labelledby="location-title">
-        <div>
-          <h2 id="location-title">Imantas Salacgrīvā</h2>
-          <p>Pērnavas iela 37, Salacgrīva. Aptuveni 250 m līdz pludmalei.</p>
-          <a href={MAP} target="_blank" rel="noopener noreferrer" className={styles.actionLink}>Atvērt maršrutu Google Maps <Arrow diagonal /></a>
-        </div>
-        <div className={styles.mapCard}>
-          <iframe
-            title="Imantas atrašanās vieta — Pērnavas iela 37, Salacgrīva"
-            src={MAP_EMBED}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-            allowFullScreen
-          />
+        <div className={styles.container + " " + styles.locationGrid}>
+          <div>
+            <h2 id="location-title">Netālu no jūras</h2>
+            <p>Pērnavas iela 37, Salacgrīva. Aptuveni 250 m līdz pludmalei.</p>
+            <a href={MAP} target="_blank" rel="noopener noreferrer" className={styles.smallLink}>Atvērt maršrutu Google Maps <Arrow diagonal /></a>
+          </div>
+          <div className={styles.map}>
+            <iframe title="Imantas atrašanās vieta — Pērnavas iela 37, Salacgrīva" src={MAP_EMBED}
+              loading="lazy" referrerPolicy="no-referrer-when-downgrade" allowFullScreen />
+          </div>
         </div>
       </section>
 
       <footer className={styles.footer}>
-        <div className={styles.footerTop}>
-          <div><span className={styles.footerBrand}>IMANTAS</span><p>Atpūta netālu no jūras, Salacgrīvā</p></div>
-          <div><a href="tel:+37129435752">+371 29 435 752</a><a href="mailto:avei6@inbox.lv">avei6@inbox.lv</a></div>
+        <div className={styles.container + " " + styles.footerRow}>
+          <div><div className={styles.footerLogo}>IMANTAS</div><p>Atpūta pie jūras, Salacgrīvā</p></div>
+          <div><a href="tel:+37129435752">+371 29 435 752</a><p>Neoficiāls dizaina priekšskatījums</p></div>
         </div>
-        <div className={styles.footerBottom}><span>© 2026 Imantas · dizaina demo</span><span>Neoficiāls priekšskatījums. Informācija un foto pirms publicēšanas jāsaskaņo ar saimniekiem.</span><a href="#sakums">Atpakaļ augšā ↑</a></div>
       </footer>
     </main>
   );
