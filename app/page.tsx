@@ -3,9 +3,10 @@
 import { FormEvent, useState } from "react";
 import styles from "./page.module.css";
 
-const IMAGES = {
+const IMAGES: { cabin: string; kitchen: string; bee?: string } = {
   cabin: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/857040444.jpg?k=acdd2f16f07678ca2264771065b9f164a5182d791e902f18a4499e2fc84927d3&o=",
   kitchen: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/857040640.jpg?k=672119c66fd51031dd82cf732e14a0b610ebf0501692d3214e071ceb67c49491&o=",
+  // bee: "/images/imantas-bisu-pieredze.jpg", // Ieliec tikai īstu un lietošanai saskaņotu Imantas foto.
 };
 
 const MAP = "https://www.google.com/maps/search/?api=1&query=P%C4%93rnavas+iela+37%2C+Salacgr%C4%ABva";
@@ -159,10 +160,16 @@ export default function ImantasDemo() {
       </section>
 
       <section className={styles.bee} id="pieredze" aria-labelledby="bee-title">
-        <div className={styles.container + " " + styles.beeRow}>
+        <div className={styles.container + " " + styles.beeRow + (IMAGES.bee ? " " + styles.beeWithImage : "")}>
           <h2 id="bee-title">Bišu pieredze</h2>
           <p>Bišu saimju iepazīšana, vaska sveču liešana un atpūta uz stropiem. Norisi saskaņo ar saimniekiem.</p>
           <button type="button" className={styles.smallLink} onClick={() => selectStay("Bišu pieredze")}>Jautāt par iespējām <Arrow /></button>
+          {IMAGES.bee && (
+            <figure className={styles.beeImage}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={IMAGES.bee} alt="Bišu pieredze saimniecībā Imantas" loading="lazy" />
+            </figure>
+          )}
         </div>
       </section>
 
