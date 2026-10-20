@@ -279,3 +279,40 @@
 .detailLines p{display:flex;align-items:center}
 .overline{display:none}
 @media(max-width:760px){.homeOffers{gap:28px}.offerPhoto{min-height:165px}.detailIcon{width:28px;margin-right:10px}}
+
+/* Final scoped refinements: no hero photo, meaningful amenities, contact separation, restrained motion. */
+.hero{background:var(--paper);min-height:470px;color:var(--forest);overflow:hidden}
+.hero::after{display:none}
+.heroGrid{padding:88px 0 100px}
+.heroCopy{max-width:780px}
+.hero h1{color:var(--forest);max-width:780px}
+.heroCopy>p{color:var(--forest);opacity:.86;max-width:570px}
+.amenityList{display:flex;gap:10px 24px;flex-wrap:wrap;margin-top:7px;margin-bottom:8px}
+.amenityList span{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--forest);white-space:nowrap}
+.amenityList svg{flex-shrink:0}
+.homeOffer>p{margin-bottom:12px}
+.homeOffer .offerPhoto{margin-top:20px}
+.detailIcon{color:var(--forest)}
+.detailIcon svg{display:block;width:22px;height:22px}
+.contactHero{background:var(--paper);padding:65px 0 74px}
+.contactHero h1{margin-bottom:16px}
+.inquiry{background:var(--warm);padding:88px 0 104px;border-top:1px solid var(--line)}
+.inquiry .requestHead h2{font-size:clamp(35px,3.2vw,47px)}
+.requestGrid{gap:clamp(45px,7vw,100px)}
+.requestForm{border-left:1px solid var(--line);padding-left:clamp(25px,4vw,56px)}
+.location{background:var(--paper);border-top:1px solid var(--line);padding:85px 0 95px}
+.page :is(.primaryBtn,.navCta,.smallLink,.offerPhoto){transition:background-color .2s ease,color .2s ease,transform .2s ease,border-color .2s ease}
+.page .primaryBtn:hover,.page .navCta:hover{transform:translateY(-2px)}
+.page .offerPhoto{transition:background-color .2s ease}
+.page .homeOffer:hover .offerPhoto{background:#eee8de}
+@media(max-width:760px){
+ .hero{min-height:0}.heroGrid{padding:68px 0 76px}
+ .requestForm{border-left:0;border-top:1px solid var(--line);padding:27px 0 0}
+ .contactHero{padding:50px 0 58px}
+ .inquiry{padding:55px 0 70px}.location{padding:55px 0 65px}
+ .amenityList{gap:9px 17px}
+}
+@media(prefers-reduced-motion:reduce){
+ .page :is(.primaryBtn,.navCta,.smallLink,.offerPhoto){transition:none}
+ .page .primaryBtn:hover,.page .navCta:hover{transform:none}
+}
