@@ -14,7 +14,7 @@ Atver http://localhost:3000.
 ## Projekta saturs
 - Hero un ātrs pārskats par atpūtas iespējām
 - Vasaras dzīvokļi, guļbaļķu pirtsmāja, bišu pieredze
-- Imantas foto no publiski pieejamiem avotiem (izmantošanas atļaujas nav vēl apstiprinātas)
+- Full-width hero ar publiski pieejamu Imantas foto tikai demo; citur tekstuāli attēlu vietturi. Pirms oficiālas publicēšanas vajadzīga foto izmantošanas atļauja.
 - Google Maps saite un rezervācijas **pieprasījuma e-pasta sagatavošana** (nevis automātiska rezervācija)
 
 ## Svarīgi
@@ -24,7 +24,7 @@ Atver http://localhost:3000.
 Vercel → Add New Project → Import `davisl24/Imantasatputas` → Framework: Next.js → Deploy.
 
 ## Design Blueprint
-Sadaļas: hero → vasaras dzīvokļi/pirtsmāja → bišu pieredze → pieejamības pieprasījums → atrašanās vieta. Apstiprinātā palete: Warm Coastal Natural. Vasaras dzīvokļus neattēlojam ar neatbilstošu īpašuma foto; hero un pirtsmāja lieto atšķirīgas, autentiskas pirtsmājas fotogrāfijas. Nav galerijas un atsevišķas faktu joslas. Viena galvenā darbība — noskaidrot pieejamību.
+Sadaļas: hero → vasaras dzīvokļi/pirtsmāja → bišu pieredze → pieejamības pieprasījums → atrašanās vieta. Apstiprinātā palete: Warm Coastal Natural. Vasaras dzīvokļus un pirtsmājas interjeru demo attēlojam ar skaidri marķētām foto vietām, nevis neatbilstošām bildēm. Hero izmanto vienu pilna platuma reālu īpašuma foto. Nav galerijas un atsevišķas faktu joslas. Viena galvenā darbība — noskaidrot pieejamību.
 
 ## Pārbaude pirms klienta demonstrācijas
 - [ ] `npm run build` izpildās
