@@ -316,3 +316,23 @@
  .page :is(.primaryBtn,.navCta,.smallLink,.offerPhoto){transition:none}
  .page .primaryBtn:hover,.page .navCta:hover{transform:none}
 }
+
+/* Pre-demo clarity pass: breadcrumbs, reserved hero photo, remove redundant dividers. */
+.breadcrumbs{display:flex;align-items:center;gap:11px;font-size:13px;color:var(--forest);margin-bottom:26px}
+.breadcrumbs a{text-decoration:none}
+.breadcrumbs a:hover,.breadcrumbs a:focus-visible{text-decoration:underline;text-underline-offset:4px}
+.breadcrumbs span[aria-current="page"]{font-weight:600}
+.subHero .primaryBtn{margin-top:29px}
+.heroGrid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;gap:clamp(36px,5vw,85px)}
+.heroDemoPhoto{min-height:300px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;background:var(--warm);padding:40px;border:1px solid var(--line)}
+.heroDemoPhoto span{font:400 clamp(25px,2.8vw,38px)/1.14 var(--serif);letter-spacing:-.025em}
+.heroDemoPhoto p{font-size:14px;line-height:1.65;color:var(--forest);max-width:285px;margin-top:12px}
+.homeOffer{border-top:0;border-bottom:0;padding:18px 0 20px}
+.subHero,.contactHero{border-bottom:0}
+.inquiry,.location{border-top:0}
+.phone{border-bottom:0;padding-bottom:0}
+.phone:hover,.phone:focus-visible{opacity:.75}
+.smallLink{border-bottom:0;padding-bottom:0;text-decoration:none}
+.smallLink:hover,.smallLink:focus-visible{text-decoration:underline;text-underline-offset:5px}
+.homeOffer .smallLink{border-bottom:0}
+@media(max-width:760px){.heroGrid{grid-template-columns:1fr;gap:30px}.heroDemoPhoto{min-height:225px;padding:27px}.breadcrumbs{margin-bottom:20px}.homeOffer{padding:10px 0 20px}}
