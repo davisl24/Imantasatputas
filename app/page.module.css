@@ -190,3 +190,46 @@
 @media(prefers-reduced-motion:reduce){
   .page :is(a,button) { transition:none; }
 }
+
+/* Shared multi-page KARLE-inspired guesthouse layout */
+.navList,.mobileNavList,.footerLinks {list-style:none;margin:0;padding:0;display:flex;gap:32px;align-items:center}
+.navList a[aria-current="page"],.mobileNavList a[aria-current="page"] {font-weight:700;text-decoration:underline;text-underline-offset:6px}
+.footerLinks {align-items:flex-start;flex-direction:column;gap:10px}
+.footerLinks a:hover,.footerLinks a:focus-visible {text-decoration:underline;text-underline-offset:4px}
+.subHero {background:var(--paper);padding:92px 0 100px;border-bottom:1px solid var(--line)}
+.subHero h1 {font:400 clamp(49px,5.4vw,78px)/1.1 var(--serif);letter-spacing:-.045em;max-width:790px;margin:16px 0 23px}
+.subHero p:not(.overline) {font-size:16px;line-height:1.75;color:#526356;max-width:580px}
+.overline {font-size:12px;color:#687c6b;letter-spacing:.13em;text-transform:uppercase}
+.subHero .primaryBtn {margin-top:27px}
+.demoPhoto {min-height:320px;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:17px;background:#e9ebe4;border:1px solid #dce0d5;padding:38px;align-self:stretch}
+.demoPhoto span {font:400 clamp(25px,3vw,40px)/1.2 var(--serif);letter-spacing:-.03em}
+.demoPhoto p {max-width:360px;color:#617061;font-size:14px;line-height:1.7}
+.demoPhoto a {border-bottom:1px solid #789078;font-size:13px;font-weight:600}
+.detailsGrid {display:grid;grid-template-columns:1fr 1fr;gap:75px;align-items:center}
+.detailsGrid h2 {font:400 clamp(39px,4vw,56px)/1.1 var(--serif);letter-spacing:-.04em}
+.detailLines {margin:35px 0 22px}
+.detailLines p {padding:17px 0;border-bottom:1px solid var(--line);font-size:16px}
+.homeOffers {display:grid;grid-template-columns:1fr 1fr;gap:55px}
+.homeOffer {padding:35px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.homeOffer>span {font-size:11px;letter-spacing:.1em;color:#647264}
+.homeOffer h3 {margin-top:18px!important}
+.homeOffer>p {max-width:410px;margin-top:17px;color:#5d695e;line-height:1.7}
+.finalCta {background:#e7ebe4;text-align:center;padding:94px 24px 102px}
+.finalCta h2 {font:400 clamp(39px,4.4vw,60px)/1.13 var(--serif);letter-spacing:-.04em;max-width:730px;margin:0 auto 18px}
+.finalCta p {max-width:480px;margin:0 auto;color:#586b5c;font-size:15px}
+.finalCta .primaryBtn {margin-top:28px}
+.page section {scroll-margin-top:110px}
+@media(max-width:760px){
+ .navList {display:none}
+ .mobileNavList {flex-direction:column;align-items:stretch;gap:0}
+ .mobileNavList a {display:block;padding:12px 2px;border-bottom:1px solid var(--line)}
+ .header .nav {gap:9px}
+ .header .navCta {font-size:11px;gap:7px;padding:10px}
+ .subHero {padding:64px 0 74px}
+ .subHero h1 {font-size:clamp(41px,10vw,56px)}
+ .homeOffers,.detailsGrid {grid-template-columns:1fr;gap:24px}
+ .demoPhoto {min-height:240px;padding:28px}
+ .finalCta {padding:72px 22px 82px}
+ .footerLinks {gap:10px}
+}
+@media(max-width:390px){.header .navCta {font-size:10px;padding:9px 7px}.header .logo {font-size:22px}}
