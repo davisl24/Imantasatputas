@@ -3,7 +3,7 @@ import {useState} from "react";
 import Link from "next/link";
 import {usePathname} from "next/navigation";
 import s from "../page.module.css";
-const links=[{href:"/",label:"Sākums"},{href:"/#par-imantam",label:"Par Imantām"},{href:"/naktsmitnes",label:"Naktsmītnes"},{href:"/bisu-pieredze",label:"Bišu pieredze"},{href:"/kontakti",label:"Kontakti"}];
+const links=[{href:"/",label:"Sākums"},{href:"/par-imantam",label:"Par Imantām"},{href:"/naktsmitnes",label:"Naktsmītnes"},{href:"/bisu-pieredze",label:"Bišu pieredze"},{href:"/galerija",label:"Galerija"},{href:"/kontakti",label:"Kontakti"}];
 export function SiteHeader(){
  const [open,setOpen]=useState(false);const pathname=usePathname();
  return <><div className={s.demoStrip}>Imantas · dizaina priekšskatījums · nav oficiālā mājaslapa</div><header className={s.header}><div className={s.container+" "+s.nav}>
