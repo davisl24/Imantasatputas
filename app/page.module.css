@@ -1341,3 +1341,8 @@
 @media(max-width:1200px){.navList{gap:14px}.navLinks{font-size:12px}.nav{gap:16px}}
 @media(max-width:1020px){.navLinks{display:none}.menuButton{display:flex;justify-content:center;align-items:center;flex-direction:column;gap:6px;width:44px;height:44px;border:1px solid var(--line);background:transparent}.menuButton span{width:17px;height:1px;background:var(--forest)}.mobileLinks{display:block;background:var(--paper);padding:12px 24px 20px}}
 @media(max-width:760px){.contactFirst .requestHead h1{font-size:clamp(38px,9vw,54px)}}
+
+@media(min-width:761px) and (max-width:1020px){
+ .mobileNavList{flex-direction:column;align-items:stretch;gap:0}
+ .mobileNavList a{display:block;padding:12px 2px;min-height:44px}
+}
