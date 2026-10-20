@@ -23,7 +23,7 @@ export default function ImantasDemo() {
           <div className={styles.heroCopy}>
             <h1 id="hero-title">Atpūta pie jūras Salacgrīvā</h1>
             <p>Pieci vasaras dzīvokļi, guļbaļķu pirtsmāja un bišu pieredze. Aptuveni 250 metru līdz pludmalei.</p>
-            <a href="/kontakti#pieprasijums" className={styles.primaryBtn}>Jautāt par pieejamību <Arrow /></a>
+            <a href="/kontakti#pieprasijums" className={styles.primaryBtn}>Jautāt par pieejamību <span aria-hidden="true">→</span></a>
           </div>
         </div>
       </section>
