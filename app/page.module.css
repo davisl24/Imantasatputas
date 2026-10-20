@@ -1298,3 +1298,35 @@
  .inquiry .requestForm{border-top-color:rgba(255,253,248,.3)}
 }
 @media(prefers-reduced-motion:reduce){.galleryPlaceholder{transition:none}}
+
+
+/* Contact-first composition and distinct section rhythm */
+.aboutSection{background:var(--warm);padding:92px 0 102px}
+.stays{background:var(--paper)}
+.bee{background:var(--warm)}
+.gallerySection{background:var(--paper)}
+.contactFirst{background:var(--paper);padding:55px 0 92px;scroll-margin-top:95px}
+.contactFirst .breadcrumbs{margin-bottom:44px}
+.contactHeading{margin-bottom:58px}
+.contactHeading h1{font:400 clamp(47px,5.1vw,74px)/1.1 var(--serif);letter-spacing:-.04em;margin-bottom:18px}
+.contactHeading p{max-width:600px;font-size:16px;line-height:1.7;color:var(--forest)}
+.contactFirst .requestGrid{align-items:start}
+.contactFirst .requestHead{padding-top:8px}
+.contactFirst .requestHead h2{font:400 clamp(32px,3.1vw,43px)/1.15 var(--serif)}
+.contactFirst .requestHead p{color:var(--forest)}
+.contactFirst .field label{color:var(--forest)}
+.contactFirst .field input,.contactFirst .field select{background:var(--warm);color:var(--forest);border-color:var(--line)}
+.contactFirst .formAction p{color:var(--forest)}
+.contactFirst .formAction .primaryBtn{background:var(--forest);color:var(--warm)!important}
+.contactFirst .requestForm{border-left-color:var(--line)}
+.contactFirst .formError{color:#94392b}
+.location{background:var(--warm)}
+@media(max-width:1100px){.navList{gap:19px}}
+@media(max-width:760px){
+ .aboutSection{padding:64px 0 74px}
+ .contactFirst{padding:42px 0 67px}
+ .contactFirst .breadcrumbs{margin-bottom:29px}
+ .contactHeading{margin-bottom:35px}
+ .contactHeading h1{font-size:clamp(40px,10vw,55px)}
+ .contactFirst .requestForm{border-left:0;border-top:1px solid var(--line)}
+}
