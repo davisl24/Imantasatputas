@@ -1261,3 +1261,40 @@
   transform: none;
 }
 }
+
+
+/* Home page: concise property introduction and photo-free gallery preview */
+.aboutSection{padding:88px 0 94px;background:var(--paper)}
+.aboutGrid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(35px,7vw,100px);align-items:start}
+.aboutGrid h2,.galleryIntro h2{font:400 clamp(39px,4vw,58px)/1.12 var(--serif);letter-spacing:-.035em}
+.aboutGrid p{max-width:570px;color:var(--forest);font-size:16px;line-height:1.8}
+.aboutGrid .smallLink{margin-top:25px}
+.gallerySection{padding:88px 0 100px;background:var(--warm)}
+.galleryIntro{display:flex;align-items:end;justify-content:space-between;gap:40px;margin-bottom:34px}
+.galleryIntro p{max-width:435px;font-size:15px;line-height:1.7;color:var(--forest)}
+.galleryGrid{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:18px}
+.galleryPlaceholder{min-height:270px;padding:24px;background:var(--paper);display:flex;flex-direction:column;justify-content:flex-end;gap:4px}
+.galleryPlaceholder span{font:400 clamp(23px,2.5vw,34px)/1.15 var(--serif)}
+.galleryPlaceholder small{font-size:12px;color:var(--forest);opacity:.75}
+/* Contact request is the primary action, with accessible light controls on pine green */
+.inquiry{background:var(--forest);color:var(--warm)}
+.inquiry .requestHead h2,.inquiry .requestHead p,.inquiry .phone,.inquiry .requestHead a{color:var(--warm)}
+.inquiry .field label{color:var(--warm)}
+.inquiry .field input,.inquiry .field select{background:var(--warm);color:var(--forest);border-color:var(--paper)}
+.inquiry .field input::placeholder{color:#67796b}
+.inquiry .formAction p{color:var(--warm)}
+.inquiry .formAction .primaryBtn{background:var(--warm);color:var(--forest)!important}
+.inquiry .formAction .primaryBtn:hover{background:var(--paper)}
+.inquiry .requestForm{border-left-color:rgba(255,253,248,.3)}
+.inquiry .formError{color:#fff0d8}
+@media(max-width:760px){
+ .aboutSection,.gallerySection{padding:65px 0 73px}
+ .aboutGrid{grid-template-columns:1fr;gap:18px}
+ .galleryIntro{display:block}
+ .galleryIntro p{margin-top:15px}
+ .galleryGrid{grid-template-columns:1fr 1fr;gap:12px}
+ .galleryPlaceholder{min-height:185px;padding:18px}
+ .galleryPlaceholder:first-child{grid-column:1/-1;min-height:220px}
+ .inquiry .requestForm{border-top-color:rgba(255,253,248,.3)}
+}
+@media(prefers-reduced-motion:reduce){.galleryPlaceholder{transition:none}}
