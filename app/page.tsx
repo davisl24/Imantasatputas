@@ -3,9 +3,8 @@
 import { FormEvent, useState } from "react";
 import styles from "./page.module.css";
 
-const IMAGES: { cabin: string; kitchen: string; bee?: string } = {
+const IMAGES: { cabin: string; bee?: string } = {
   cabin: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/857040444.jpg?k=acdd2f16f07678ca2264771065b9f164a5182d791e902f18a4499e2fc84927d3&o=",
-  kitchen: "https://cf.bstatic.com/xdata/images/hotel/max1024x768/857040640.jpg?k=672119c66fd51031dd82cf732e14a0b610ebf0501692d3214e071ceb67c49491&o=",
   // bee: "/images/imantas-bisu-pieredze.jpg", // Ieliec tikai īstu un lietošanai saskaņotu Imantas foto.
 };
 
@@ -100,17 +99,17 @@ export default function ImantasDemo() {
       </header>
 
       <section className={styles.hero} aria-labelledby="hero-title">
+        <figure className={styles.heroImage}>
+          {/* Demo: publisks īpašuma foto; pirms oficiālas publicēšanas jāsaņem atļauja. */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={IMAGES.cabin} alt="Imantas guļbaļķu pirtsmāja ar apgaismotu terasi" />
+        </figure>
         <div className={styles.container + " " + styles.heroGrid}>
           <div className={styles.heroCopy}>
             <h1 id="hero-title">Atpūta pie jūras Salacgrīvā</h1>
-            <p>Imantās pieejami pieci vasaras dzīvokļi un guļbaļķu pirtsmāja. Līdz pludmalei ir aptuveni 250 metri, un pēc vienošanās var iepazīt arī bišu saimes.</p>
+            <p>Pieci vasaras dzīvokļi, guļbaļķu pirtsmāja un bišu pieredze. Aptuveni 250 metru līdz pludmalei.</p>
             <a href="#pieprasijums" className={styles.primaryBtn}>Jautāt par pieejamību <Arrow /></a>
           </div>
-          <figure className={styles.heroImage}>
-            {/* Autentisks publiskais Imantas foto; lietošanas atļauja pirms publicēšanas jāsaskaņo. */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={IMAGES.cabin} alt="Imantas guļbaļķu pirtsmāja ar apgaismotu terasi" />
-          </figure>
         </div>
       </section>
 
@@ -141,11 +140,10 @@ export default function ImantasDemo() {
           </article>
 
           <article className={styles.sauna}>
-            <figure className={styles.saunaImage}>
-              {/* Attēlā redzama pirtsmājas virtuve, nevis vasaras dzīvoklis. */}
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={IMAGES.kitchen} loading="lazy" alt="Imantas pirtsmājas koka interjers ar virtuves zonu" />
-            </figure>
+            <div className={styles.saunaImage} role="note" aria-label="Pirtsmājas foto vieta demonstrācijā">
+              <span className={styles.demoImageLabel}>Pirtsmājas foto</span>
+              <p>Šeit paredzēts saimnieku saskaņots pirtsmājas interjera vai terases attēls.</p>
+            </div>
             <div className={styles.saunaContent}>
               <h3>Guļbaļķu pirtsmāja</h3>
               <p className={styles.description}>Atpūta līdz sešiem viesiem. Malkas pirts, virtuve un terase. Kubls pieejams papildus.</p>
@@ -155,7 +153,7 @@ export default function ImantasDemo() {
               </button>
             </div>
           </article>
-          <p className={styles.photoDisclaimer}>Pirtsmājas foto: <a href={CABIN_SOURCE} target="_blank" rel="noopener noreferrer">publiskais naktsmītnes profils</a>. Lietošanas tiesības pirms publicēšanas jāsaskaņo.</p>
+          <p className={styles.photoDisclaimer}>Demo hero foto avots: <a href={CABIN_SOURCE} target="_blank" rel="noopener noreferrer">publiskais naktsmītnes profils</a>. Pirms publicēšanas jāsaskaņo lietošanas tiesības.</p>
         </div>
       </section>
 
