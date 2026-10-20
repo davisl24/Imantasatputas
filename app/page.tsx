@@ -105,7 +105,7 @@ export default function ImantasDemo() {
           <div className={styles.heroText}>
             <div className={styles.locationLine}><span className={styles.smallLine} /> Salacgrīva · 250 m līdz jūrai</div>
             <h1 id="hero-title">Atpūta <em>pie jūras</em> Salacgrīvā</h1>
-            <p>Vasaras dzīvokļi, guļbaļķu pirtsmāja un īpaša bišu pieredze. Izvēlieties sev piemērotāko atpūtu vien dažu minūšu gājienā no pludmales.</p>
+            <p>Vasaras dzīvokļi, guļbaļķu pirtsmāja un bišu pieredze — mierīgai atpūtai dažu minūšu gājienā no jūras.</p>
             <div className={styles.heroActions}>
               <a href="#naktsmitnes" className={styles.buttonDark}>Izvēlēties atpūtu <Arrow /></a>
               <a href="#vieta" className={styles.underlinedLink}>Kur mēs atrodamies <Arrow diagonal /></a>
@@ -139,7 +139,7 @@ export default function ImantasDemo() {
           <div className={styles.stayImageWrap}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={IMAGES.sign} alt="Saimniecības Imantas koka nosaukuma zīme zaļā dārzā" loading="lazy" className={styles.stayImage} />
-            <span className={styles.imageIndex}>Īsts Imantas īpašuma foto</span>
+            <span className={styles.imageIndex}>Demo attēls · dzīvokļa foto nepieciešams</span>
           </div>
           <div className={styles.stayText}>
             <span className={styles.stayLabel}>Maijs — septembris</span>
