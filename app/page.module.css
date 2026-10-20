@@ -233,3 +233,23 @@
  .footerLinks {gap:10px}
 }
 @media(max-width:390px){.header .navCta {font-size:10px;padding:9px 7px}.header .logo {font-size:22px}}
+
+
+/* Imantas visual hierarchy refinement: warm coastal sections, clear CTA separation. */
+.page { --paper:#f5f1e9;--warm:#fffdf8;--line:#d9d6cd;--forest:#314539; }
+.header { background:var(--paper);box-shadow:0 3px 14px rgba(31,46,37,.045); }
+.navList a {display:inline-flex;align-items:center;min-height:44px}
+.navList a:hover,.navList a:focus-visible {text-decoration:underline;text-underline-offset:6px}
+.bee {background:#eee8dc;border-color:#dcd5c8;padding:70px 0;}
+.bee h2 {color:#283b31}
+.bee p {color:#435247}
+.bee .smallLink {border-color:#6c7b6b}
+.finalCta {background:#314539;color:#fffdf8;border-top:1px solid #26392e;}
+.finalCta h2 {color:#fffdf8}
+.finalCta p {color:#e1e7dc}
+.finalCta .primaryBtn {background:#fffdf8;color:#26382c!important}
+.finalCta .primaryBtn:hover,.finalCta .primaryBtn:focus-visible {background:#ece7dc}
+.homeOffer h3 {line-height:1.15}
+.homeOffer .smallLink {min-height:44px;align-items:center}
+.mobileNavList a {min-height:44px}
+@media(max-width:760px){.bee {padding:52px 0}.header .navCta {min-height:44px}.menuButton {min-width:44px;min-height:44px}}
