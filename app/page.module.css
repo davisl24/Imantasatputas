@@ -1353,3 +1353,44 @@
 
 /* KARLE typography: Manrope for headings and body, matching approved editorial system. */
 .page :is(h1,h2,h3){font-weight:500;letter-spacing:-.04em}
+
+
+/* Final mobile QA corrections — 320px viewport and consistent content rhythm */
+.page{min-width:0;overflow-x:clip}
+.page *, .page *::before,.page *::after{box-sizing:border-box}
+.page :is(.container,.requestGrid,.requestForm,.fields,.field,.galleryGrid,.galleryPlaceholder,.footerRow,.footerRow>*,.homeOffers,.homeOffer,.demoPhoto){min-width:0;max-width:100%}
+.homeOffers{align-items:stretch}
+.homeOffer>p{min-height:54px}
+.homeOffer .amenityList{min-height:34px;align-items:center}
+.homeOffer .offerPhoto{margin-top:auto}
+.footerHeading{font-size:12px!important;font-weight:700;color:var(--forest)!important;margin:0 0 15px!important}
+.footerContact{display:flex;flex-direction:column;gap:9px}
+.footerContact p:not(.footerHeading){margin:0!important}
+.footerRow nav{min-width:0}
+@media(max-width:760px){
+ .saunaContent{order:-1}
+ .sauna>.demoPhoto{order:0}
+ .galleryGrid>.galleryPlaceholder:last-child{grid-column:1/-1}
+ .homeOffer>p,.homeOffer .amenityList{min-height:0}
+ .footerRow{align-items:stretch;gap:30px}
+ .footerRow>div:first-child{padding-bottom:20px;border-bottom:1px solid var(--line)}
+ .footerRow nav{padding-bottom:20px;border-bottom:1px solid var(--line)}
+ .footerLinks{display:grid;grid-template-columns:1fr 1fr;gap:13px 16px}
+ .fields{grid-template-columns:minmax(0,1fr);gap:16px}
+ .spanFull{grid-column:1}
+ .requestForm{width:100%;max-width:100%}
+ .field input,.field select{width:100%;min-width:0;max-width:100%;font-size:16px}
+ .requestGrid{grid-template-columns:minmax(0,1fr)}
+ .formAction,.formAction .primaryBtn{width:100%;max-width:100%}
+}
+@media(max-width:430px){
+ .navActions>.navCta{display:none}
+ .header .nav{justify-content:space-between}
+ .header .logo{font-size:24px}
+ .header .menuButton{display:flex;flex-shrink:0}
+ .galleryGrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+ .galleryPlaceholder:first-child,.galleryPlaceholder:last-child{grid-column:1/-1}
+ .galleryPlaceholder{padding:16px}
+ .galleryPlaceholder span{overflow-wrap:anywhere;font-size:clamp(18px,6vw,26px)}
+ .footerLinks{grid-template-columns:1fr 1fr}
+}
