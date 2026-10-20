@@ -1346,3 +1346,6 @@
  .mobileNavList{flex-direction:column;align-items:stretch;gap:0}
  .mobileNavList a{display:block;padding:12px 2px;min-height:44px}
 }
+
+/* About page only: white story section, home preview unchanged. */
+.aboutPageWhite{background:var(--warm)}
