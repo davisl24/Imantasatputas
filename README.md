@@ -1,34 +1,35 @@
-# IMANTAS — atpūta Salacgrīvā
+# IMANTAS — viesu nama demo
 
-Patstāvīgs **Coastal Editorial** mājaslapas demo projektam Imantas (Pērnavas iela 37, Salacgrīva).
+Next.js daudzlapu demo Salacgrīvā, Pērnavas ielā 37. Dizains balstīts KARLE viesu nama editorial pieejā, pielāgots Imantas Warm Coastal Natural identitātei.
 
-## Palaišana
+## Lapas
+- `/` — pilna platuma hero, naktsmītņu pārskats, bišu pieredze, CTA
+- `/naktsmitnes` — vasaras dzīvokļi un guļbaļķu pirtsmāja
+- `/bisu-pieredze` — pieredzes apraksts un pieteikšanās ceļš
+- `/kontakti` — e-pasta pieprasījuma sagatavošana, tālrunis un atrašanās vieta
 
+Visām lapām ir kopīga sticky navigācija un kājene. Desktop un mobile izkārtojumi definēti `app/page.module.css`.
+
+## Lokāla palaišana
 ```bash
-npm install
+npm ci
 npm run dev
 ```
+Atver http://localhost:3000. Pirms nodošanas palaid `npm run build`.
 
-Atver http://localhost:3000.
+## Demo ierobežojumi
+- Tikai hero izmanto publiski pieejamu Imantas īpašuma foto. Publicēšanai nepieciešama izmantošanas atļauja.
+- Pārējām fotogrāfijām ir skaidri teksta vietturi; nav AI vai stock uzņēmuma foto.
+- Nav izdomātu atsauksmju, cenu vai automātiski apstiprinātas pieejamības.
+- Kontaktforma izmanto `mailto:`: apmeklētājs nosūta e-pastu pats; sistēma neko automātiski nesūta un neglabā.
+- Pirms oficiālas palaišanas jāapstiprina klienta dati, teksts, foto tiesības un privātuma informācija.
 
-## Projekta saturs
-- Hero un ātrs pārskats par atpūtas iespējām
-- Vasaras dzīvokļi, guļbaļķu pirtsmāja, bišu pieredze
-- Full-width hero ar publiski pieejamu Imantas foto tikai demo; citur tekstuāli attēlu vietturi. Pirms oficiālas publicēšanas vajadzīga foto izmantošanas atļauja.
-- Google Maps saite un rezervācijas **pieprasījuma e-pasta sagatavošana** (nevis automātiska rezervācija)
+## QA pirms demonstrācijas
+- [ ] `npm run build` sekmīgs
+- [ ] Atvērtas visas četras lapas, un navigācija/CTA darbojas
+- [ ] Desktop 1440px un mobile 390px bez horizontālas ritināšanas
+- [ ] Sticky navigācija nepārklāj sadaļu virsrakstus
+- [ ] `mailto:` saturs un ārējās saites pārbaudītas
+- [ ] Pārbaudīta tastatūras navigācija un kontrasts
 
-## Svarīgi
-**Šis ir neoficiāls demonstrācijas projekts.** Rezervāciju pieejamība netiek pārbaudīta un forma pati neko nenosūta — tā atver lietotāja e-pasta programmu. Pirms oficiālas publicēšanas jāapstiprina saturs, cenas un fotogrāfiju tiesības ar īpašniekiem. Nav izdomātu atsauksmju vai pieejamības.
-
-## Deploy
-Vercel → Add New Project → Import `davisl24/Imantasatputas` → Framework: Next.js → Deploy.
-
-## Design Blueprint
-Sadaļas: hero → vasaras dzīvokļi/pirtsmāja → bišu pieredze → pieejamības pieprasījums → atrašanās vieta. Apstiprinātā palete: Warm Coastal Natural. Vasaras dzīvokļus un pirtsmājas interjeru demo attēlojam ar skaidri marķētām foto vietām, nevis neatbilstošām bildēm. Hero izmanto vienu pilna platuma reālu īpašuma foto. Nav galerijas un atsevišķas faktu joslas. Viena galvenā darbība — noskaidrot pieejamību.
-
-## Pārbaude pirms klienta demonstrācijas
-- [ ] `npm run build` izpildās
-- [ ] Desktop 1440px / mobilais 390px bez horizontālas ritināšanas
-- [ ] Pārbaudītas foto URL, kontakti un ārējās saites
-- [ ] Rezervācijas pieprasījuma dati korekti atveras e-pasta klientā
-- [ ] Apstiprinātas attēlu izmantošanas tiesības pirms jebkādas oficiālas publicēšanas
+Vecā main versija saglabāta zarā `backup/imantas-main-before-editorial-20261020`.
