@@ -1423,3 +1423,10 @@
 .homeOffer .amenityList{margin-top:19px}
 .galleryIntro{display:block}
 @media(max-width:760px){.heroImageNotice{padding:22px}.facts{gap:10px 16px}}
+
+/* Season details follow the amenities; keep offer columns aligned. */
+.homeOffer>.seasonInfo{margin-top:14px;display:inline-flex;align-items:center;gap:9px;min-height:24px}
+.homeOffer>.offerPhoto{margin-top:22px}
+.subHero .primaryBtn{margin-top:25px}
+.finalCta .primaryBtn{margin-top:24px}
+@media(max-width:760px){.homeOffer>.seasonInfo{margin-top:12px}}
